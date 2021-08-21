@@ -38,7 +38,9 @@ const MORSE_TABLE = {
 };
 
 function decode(expr) {
-    // write your solution here
+    let arrZeroNull = expr.match(/.{1,10}/g).map(item => item.split('00').join("").split(10).join('.').split(11).join('-')); //Разбиваем на элементы по 10 символов, убираем сплитом лишние нули и заменяем 10 и 11 на . и - соответственно
+    MORSE_TABLE['**********'] = ' '; //Добавляем пробел в MORSE_TABLE
+    return arrZeroNull.map(item => MORSE_TABLE[item]).join(''); //Декодируем точки-тире и объединяем элементы в строку
 }
 
 module.exports = {
